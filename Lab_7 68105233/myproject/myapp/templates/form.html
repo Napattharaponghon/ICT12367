@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มบันทึกข้อมูล</title>
+<style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+        .card {
+            width: 350px;
+            margin: 60px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+        }
+        button {
+            background: rgb(255, 0, 230);
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>บันทึกข้อมูลพนักงาน</h2>
+    <form>
+        <label>Full Name</label>
+        <input type="text">
+
+        <label>Email</label>
+        <input type="email">
+
+        <label>Position</label>
+        <select>
+            <option>Manager</option>
+            <option>Staff</option>
+        </select>
+
+        <label>Phone Number</label>
+        <input type="text">
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
