@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+/* Hero Section */
+.hero{
+    background: linear-gradient(135deg,#f5efe6,#fdfaf6);
+    padding:80px 20px;
+    border-radius:15px;
+}
+
+/* รูปสินค้า */
+.hero img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* หัวข้อ */
+.hero h1{
+    color:#6b4f3b;
+    font-weight:700;
+}
+
+/* ปุ่ม */
+.btn-shop{
+    background:#c8a97e;
+    color:#e8dfd6;
+    border:none;
+    padding:12px 30px;
+    border-radius:10px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.btn-shop:hover{
+    background:#a8865f;
+    transform:translateY(-3px);
+}
+
+/* จุดเด่นสินค้า */
+.feature-box{
+    text-align:center;
+    padding:20px;
+}
+
+.feature-box h5{
+    color:#6b4f3b;
+}
+
+.feature-box i{
+    font-size:40px;
+    color:#c8a97e;
+    margin-bottom:10px;
+}
+
+</style>
+
+
+<!-- HERO SECTION -->
+<div class="hero container">
+
+<div class="row align-items-center">
+
+<!-- ข้อความ -->
+<div class="col-md-6">
+
+<h1>HONGWILAI COLLECTION</h1>
+
+<p class="mt-3">
+ค้นพบสินค้าคุณภาพจากแบรนด์ของเรา  
+ออกแบบอย่างเรียบหรู เหมาะกับทุกสไตล์
+</p>
+
+<a href="/products/" class="btn btn-shop mt-3">
+เลือกซื้อสินค้า
+</a>
+
+</div>
+
+<!-- รูปภาพ -->
+<div class="col-md-6">
+
+<img src="https://images.pexels.com/photos/4041689/pexels-photo-4041689.jpeg">
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FEATURE -->
+<div class="container mt-5">
+
+<div class="row">
+
+<div class="col-md-4 feature-box">
+<h5>คุณภาพพรีเมียม</h5>
+<p>สินค้าทุกชิ้นคัดสรรวัสดุอย่างดี</p>
+</div>
+
+<div class="col-md-4 feature-box">
+<h5>ดีไซน์ทันสมัย</h5>
+<p>ออกแบบให้ดูเรียบหรูและทันสมัย</p>
+</div>
+
+<div class="col-md-4 feature-box">
+<h5>บริการยอดเยี่ยม</h5>
+<p>พร้อมดูแลลูกค้าทุกท่านอย่างดีที่สุด</p>
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
