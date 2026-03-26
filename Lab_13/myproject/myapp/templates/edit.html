@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+แบบฟอร์มแก้ไขข้อมูลประชาชน
+{% endblock %}
+
+{% block content %}
+
+<style>
+.form-card {
+    max-width: 450px;
+    margin: 60px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.form-header {
+    background-color: #5e3f27;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+</style>
+
+<div class="card form-card">
+    <div class="form-header">
+        แบบฟอร์มแก้ไขข้อมูลเข้าสู่ระบบ
+    </div>
+
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">ชื่อและนามสกุล</label>
+                <input type="text" class="form-control" name="name"
+                value="{{ person.name }}"
+                placeholder="กรุณากรอกชื่อ-นามสกุล">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">อายุ</label>
+                <input type="number" class="form-control" name="age"
+                value="{{ person.age }}"
+                placeholder="กรอกข้อมูลอายุเป็นตัวเลข">
+            </div>
+
+            <div class="mb-3">
+                <label for="department" class="form-label">แผนก</label>
+                <div class="d-flex gap-2"> <select name="department" id="department_select" class="form-select">
+                        <option value="">--ไม่ระบุแผนก--</option>
+                        {% for dept in departments %}
+                            <option value="{{ dept.id }}"
+                            {% if person.department and person.department.id == dept.id %}
+                            selected
+                            {% endif %}>
+                                {{ dept.deptName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    
+                    <button type="button" class="btn btn-outline-success" 
+                            data-bs-toggle="modal" data-bs-target="#addDeptModal" style="white-space: nowrap;">
+                        + เพิ่มแผนก
+                    </button>
+                </div>
+            </div>
+            
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">อัปเดทข้อมูล</button>
+                <button type="reset" class="btn btn-danger">ล้างข้อมูล</button>
+            </div>
+        </form>
+    </div>
+</div>  
+
+<div class="modal fade" id="addDeptModal" tabindex="-1" aria-labelledby="addDeptModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDeptModalLabel">เพิ่มแผนกใหม่</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addDeptForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="newDeptName" class="form-label">ชื่อแผนก</label>
+                        <input type="text" id="newDeptName" name="deptName" class="form-control" placeholder="ชื่อแผนก" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newLocation" class="form-label">ตำแหน่งที่ตั้ง</label>
+                        <input type="text" id="newLocation" name="location" class="form-control" placeholder="ตำแหน่งที่ตั้ง" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="saveDepartment()">บันทึกแผนก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
